@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>溫度轉換</title>
+</head>
+
+<body>
+    <div class="">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">1</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">2</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">3</button></div>
+                <div><span class="jg"></span></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">4</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">5</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">6</button></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">7</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">8</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">9</button></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">0</button></div>
+                <div class="col-2"><button type="button" class="btn-block btn btn-success input-pad">.</button></div>
+                <!-- <div class="col"></div> -->
+            </div>
+           
+        </div> 
+        <div class="container">
+            <div class="row mt-3 mb-3">
+                <div class="col-1"><button type="button" class="btn-block btn btn-primary calcal"onclick="plsmotherfucker()">+</button></div>
+                <div class="col-1"><button type="button" class="btn-block btn btn-primary calcal" onclick="lessmotherfucker()">-</button></div>
+                <div class="col-1"><button type="button" class="btn-block btn btn-primary calcal" onclick="doublemotherfucker()">*</button></div>
+                <div class="col-1"><button type="button" class="btn-block btn btn-primary calcal" onclick="nomotherfucker()">/</button></div>
+                <div class="col-1"><button type="button" class="btn-block btn btn-primary calcal" onclick="total()">=</button></div>
+                <div class="col-1"><button type="button" class="btn-block btn btn-primary calcal" onclick="clearmotherfucker()">C</button></div>
+            </div>
+            </div>
+    </div>
+    
+
+    <div class="container">
+        <div class="input-group">
+            <input type="text" class="form-control text-right" placeholder="0" id="input"
+                aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+           
+        </div>
+    </div>
+    
+  
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        var firstnumber=0;
+        var secoundnumber=0;
+        var lastnumber=0;
+        var mex="";
+        function clearmotherfucker(){
+            var input=document.getElementById("input");
+            input.value='';
+            var firstnumber=0;
+            var secoundnumber=0;
+            var lastnumber=0;
+            var mex="";
+        }
+        function plsmotherfucker(){
+            var input=document.getElementById("input");
+            firstnumber=input.value;
+            input.value='';
+            mex="+";
+            return mex;
+        }
+        function lessmotherfucker(){
+            var input=document.getElementById("input");
+            firstnumber=input.value;
+            input.value='';
+            mex="-";
+            return mex;
+        }
+        function doublemotherfucker(){
+            var input=document.getElementById("input");
+            firstnumber=input.value;
+            input.value='';
+            mex="*";
+            return mex;
+        }
+        function nomotherfucker(){
+            var input=document.getElementById("input");
+            firstnumber=input.value;
+            input.value='';
+            mex="/";
+            return mex;
+        }
+        function total(){
+            var input=document.getElementById("input");
+            secoundnumber=input.value; 
+            switch(mex){
+                case "+":
+                    lastnumber=parseFloat(firstnumber)+parseFloat(secoundnumber);
+                    break;
+                case "-":
+                    lastnumber=parseFloat(firstnumber)- parseFloat(secoundnumber);
+                    break
+                case "*":
+                    lastnumber=parseFloat(firstnumber)*parseFloat(secoundnumber);
+                    break;
+                case "/":
+                    lastnumber=parseFloat(firstnumber)/parseFloat(secoundnumber);
+                    break;
+                default:
+                    break;     
+            } 
+            input.value=lastnumber;
+        }
+        function inputButton(){
+            var input =document.getElementById("input");
+            var text =this.innerHTML;
+            input.value += text;
+
+            var newNode = document.createElement("span");
+            newNode.innerHTML += text;
+        }
+
+        var inputButtons=document.getElementsByClassName("input-pad");
+
+        for(var i=0;i<inputButtons.length;i++){
+            inputButtons[i].onclick=inputButton;
+        }
+        function calButton(){
+            var newNode = document.createElement("span");
+            var text =this.innerHTML;
+            newNode.innerHTML += text;
+        }
+        var calButtons=document.getElementsByClassName("calcal");
+        for(var i=0;i<calButtons.length;i++){
+            calButtons[i].onclick=calButton;
+        }
+
+    </script>
+</body>
+
+</html>

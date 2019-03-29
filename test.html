@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>溫度轉換</title>
+</head>
+
+<body>
+    <div class="container">
+        <label><input type="radio" name="temp" value="convert-c" checked/>攝氏轉換為華氏</label><br />
+        <label><input type="radio" name="temp" value="convert-f" />華氏轉換為攝氏</label>
+    </div>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">1</button></div>
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">2</button></div>
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">3</button></div>
+        </div>
+        <div class="row text-center">
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">4</button></div>
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">5</button></div>
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">6</button></div>
+        </div>
+        <div class="row text-center">
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">7</button></div>
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">8</button></div>
+            <div class="col"><button type="button" class="btn-block btn btn-light input-pad">9</button></div>
+        </div>
+        <div class="row text-center">
+            <div class="col-4"><button type="button" class="btn-block btn btn-light input-pad">0</button></div>
+            <div class="col-4"><button type="button" class="btn-block btn btn-light input-pad">.</button></div>
+            <!-- <div class="col"></div> -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="input-group">
+            <input type="text" class="form-control text-right" placeholder="0" id="input"
+                aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+            <div class="input-group-append" id="button-addon4">
+                <button class="btn btn-outline-secondary" type="button" id="convert" onclick="doCalc()">轉換</button>
+                <button class="btn btn-outline-secondary" type="button" id="clear" onclick="clearinput()">清除</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">結果</span>
+            </div>
+            <input type="text" class="form-control text-right" placeholder="0" id="result" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        function doCalc(){
+            var input=document.getElementById("input");
+            var result=document.getElementById("result");
+            var convertC=document.getElementById("convert-c");
+            var convertF=document.getElementById("convert-f");
+            var r=0;
+            if(convertC.checked){
+                r=(input.value*1.8)+32;
+
+            }
+            else if(convertF.checked){
+                r=(input.value-32)/1.8;
+            }
+            result.value=r;
+        
+        }
+        function clearinput(){
+            var input=document.getElementById("input");
+            var result=document.getElementById("result");
+            input.value="";
+            result.value="";
+        }
+        function inputButton(){
+            var input =document.getElementById("input");
+            var text =this.innerHTML;
+            input.value += text;
+        }
+
+        var inputButtons=document.getElementsByClassName("input-pad");
+
+        for(var i=0;i<inputButtons.length;i++){
+            inputButtons[i].onclick=inputButton;
+        }
+
+
+    </script>
+</body>
+
+</html>
