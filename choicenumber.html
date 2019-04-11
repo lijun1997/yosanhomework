@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>溫度轉換</title>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="input-group input-group-lg col-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-lg theMin">最小值</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg col-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-lg theMax">最大值</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="container"></div>
+        </div>
+    <div class="container col ml-5">
+            <button type="button" class="btn btn-primary  align-middle col-3" id="gogogo ">抽</button>
+        
+    </div>
+    <div class="container d-flex justify-content-center">
+        以抽過數字<span id="ednumber"></span>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        var min;
+        var max;
+        var numberpool=[];
+        var notyetnum=[];
+        $("#theMin").change(function(){
+            min=$("#theMin").val();
+        })
+        $("#theMax").change(function(){
+            max=$("#theMax").val();
+        })
+        $("#gogogo").click(function(){
+            getRandom();
+        })
+        function getRandom() {
+            theRandom = Math.floor(Math.random() * (max - min + 1)) + min;
+            if (numberpool.indexOf(theRandom) != 1) {
+                numberpool.push(theRandom);
+                
+            } else {
+                getRandom();
+            }
+        }
+    </script>
+</body>
+
+</html>
