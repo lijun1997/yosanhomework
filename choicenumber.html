@@ -10,28 +10,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>溫度轉換</title>
+    <title>抽起來~</title>
+    <style>
+
+        
+       
+        </style>
 </head>
 
 <body>
     <div class="container d-flex justify-content-center">
         <div class="input-group input-group-lg col-5">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-lg theMin">最小值</span>
+                  <span class="input-group-text" >最小值</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input type="number" id="theMin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
         </div>
         <div class="input-group input-group-lg col-5">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-lg theMax">最大值</span>
+                  <span class="input-group-text" id="inputGroup-sizing-lg ">最大值</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input type="number" id="theMax" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
         </div>
-        <div class="container"></div>
-        </div>
-    <div class="container col ml-5">
-            <button type="button" class="btn btn-primary  align-middle col-3" id="gogogo ">抽</button>
         
+        
+    </div>
+    <div class="container">
+            <div class=" container border border-secondary box mt-3 mb-3 text-center"
+            style="font-size: 300px;color: darkgreen; line-height: 300px; width:1000px;height:400px; overflow: hidden; position: relative;">
+            <div id="fuckyou" style=" text-align: center;"></div>
+        </div>
+    </div>
+
+    </div>
+    <div class="container d-flex justify-content-center ml-5">
+        <button type="button" class="btn-block btn-primary " id="gogogo">抽</button>        
     </div>
     <div class="container d-flex justify-content-center">
         以抽過數字<span id="ednumber"></span>
@@ -48,27 +61,87 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script>
-        var min;
-        var max;
+        var min=0;
+        var max=0;
         var numberpool=[];
         var notyetnum=[];
-        $("#theMin").change(function(){
-            min=$("#theMin").val();
-        })
-        $("#theMax").change(function(){
-            max=$("#theMax").val();
-        })
+        var theRandom;
+        var theRandom2;
+        // $("#theMin").change(function(){
+        //     min=$("#theMin").val();
+        //     console.log(min);
+        // })
+        // $("#theMax").change(function(){
+        //     max=$("#theMax").val();
+        //     console.log(max);
+        // })
         $("#gogogo").click(function(){
-            getRandom();
+
+            vivi();
         })
         function getRandom() {
-            theRandom = Math.floor(Math.random() * (max - min + 1)) + min;
-            if (numberpool.indexOf(theRandom) != 1) {
+             min=$("#theMin").val()-0;
+            max=$("#theMax").val()-0;
+            theRandom = Math.floor(Math.random() *((max - min) + 1))+min;
+            if (numberpool.indexOf(theRandom) == -1) {
                 numberpool.push(theRandom);
-                
+                var ednumber=$("#ednumber");
+                $("#ednumber").html(theRandom);
+                var text = "已猜過的數字:" + numberpool.join('、');
+                $("#ednumber").html(text);
+                // var text2=theRandom;
+                // $("#fuckyou").html(text2);
             } else {
                 getRandom();
             }
+        }
+        function getRandom2() {
+             min=$("#theMin").val()-0;
+            max=$("#theMax").val()-0;
+            theRandom2= Math.floor(Math.random() *((max - min) + 1))+min;
+            if (numberpool.indexOf(theRandom2) == -1) {
+                return;
+            }
+            else{
+                getRandom2();
+            }
+        }
+        var px=-20;
+        function vivi(){
+            getRandom();
+            
+            var times = 0;
+            $("#fuckyou").html(theRandom2);
+
+            var setT = setInterval(function () {
+
+                $("#fuckyou").css({
+                    "position": "absolute",
+                    "right": px + "px",
+                })
+                px += 50;
+                if (px > 750) {
+                    if (numberpool.length == (max - min + 1)) {
+                        theRandom2 = theRandom;
+                    } else {
+                        getRandom2();
+                    }
+                    $("#fuckyou").html(theRandom2);
+                    px = -20;
+                    times += 1;
+                }
+                if (times == 16) {
+                    clearInterval(setT);
+                    $("#fuckyou").html(theRandom);
+                    var text =   numberpool.join('、');
+                    $("#ednumber").html(text);
+
+                    $("#fuckyou").css({
+                        "position": "static",
+                    })
+                }
+            }, 8);
+
         }
     </script>
 </body>
