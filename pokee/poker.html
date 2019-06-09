@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>抽起來~</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .card{
+            width: 150px;
+            height: 200px;
+            border: 2px red solid ; 
+            margin: 30px;
+            background: url(images/Poker.jpg)no-repeat;
+            background-position: center;
+        }
+        .bkk{
+            background-color: darkgreen;
+        }
+        
+        </style>
+</head>
+
+<body>
+    <div class="container border border-primary bkk"style="width:850px;height:525px;margin-top: 20px;">
+        <div class="row">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>"
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        </div>
+       
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        var card=$(".card");
+        var cardpool=[];
+        begain();
+        function begain(){
+            var a = Math.floor(Math.random() * 8);
+            if (cardpool.indexOf(a) == -1) {
+                cardpool.push(a);
+            }
+            if (cardpool.length == 8) {
+                return;
+            } else {
+                begain();
+            }
+        
+        for (var i = 1; i <= 8 / 2; i++) {
+        $(card[cardpool[i - 1]]).addClass("card-" + i);
+        $(card[cardpool[cardpool.length - i]]).addClass("card-" + i);
+        }
+        }
+        $(".card-1").on('click', function () {
+            $(this).css({
+                "background-image": "url(images/cho.jpg)"
+            })
+        });
+        $(".card-2").on('click', function () {
+            $(this).css({
+                "background-image": "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF1gq2XNsrRH0CsVP9PlzlceDg_-dRjbHvD2lWCtVtefUBd2y8')"
+            })
+        });
+        $(".card-3").on('click', function () {
+            $(this).css({
+                "background-image": "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtcKomGZ5chahGuj-r3jD2Xd78dLAKw6vF-6SNM2ag49cvBE1e')"
+            })
+        });
+        $(".card-4").on('click', function () {
+            $(this).css({
+                "background-image": "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5d7nTFJ6PT1ZhFm3TYUnAxUDp0TNktLCmyg9V7Qtv-Mb-XOVJ')"
+            })
+        });
+        
+    </script>
+</body>
+
+</html>
