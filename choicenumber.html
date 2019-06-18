@@ -43,8 +43,8 @@
     </div>
 
     </div>
-    <div class="container d-flex justify-content-center ml-5">
-        <button type="button" class="btn-block btn-primary " id="gogogo">抽</button>        
+    <div class="container d-flex justify-content-center mx-auto "style="width: 160px;height: 60px;">
+        <button type="button" class="btn-block btn-primary mx-auto" id="gogogo"style="width: 60px;height: 30px;">抽</button>        
     </div>
     <div class="container d-flex justify-content-center">
         以抽過數字<span id="ednumber"></span>
@@ -85,7 +85,6 @@
             theRandom = Math.floor(Math.random() *((max - min) + 1))+min;
             if (numberpool.indexOf(theRandom) == -1) {
                 numberpool.push(theRandom);
-                var ednumber=$("#ednumber");
                 $("#ednumber").html(theRandom);
                 var text = "已猜過的數字:" + numberpool.join('、');
                 $("#ednumber").html(text);
